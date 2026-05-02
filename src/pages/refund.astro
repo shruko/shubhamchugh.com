@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Refund & Return Policy — Shubham Chugh"
+  description="Return and Refund Policy for services provided by TechnoFizi Solutions."
+>
+  <div class="policy-page max-w-[720px] mx-auto px-6 pt-28 pb-20" style="font-family: var(--font-sans);">
+
+    <a
+      href="/"
+      class="inline-flex items-center gap-1.5 mb-10 transition-colors duration-150"
+      style="font-size: 13px; color: var(--color-fg-3);"
+      onmouseenter="this.style.color='var(--color-accent)'"
+      onmouseleave="this.style.color='var(--color-fg-3)'"
+    >
+      ← Back to home
+    </a>
+
+    <h1 style="font-family: var(--font-display); font-size: clamp(32px, 6vw, 52px); font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 8px;">
+      Return &amp; Refund Policy
+    </h1>
+    <p style="font-size: 13px; color: var(--color-fg-3); margin-bottom: 48px;">Last updated: May 3, 2026</p>
+
+    <div class="policy-content">
+
+      <p>Thank you for purchasing services from TechnoFizi Solutions. If, for any reason, You are not completely satisfied with a purchase, please review our policy on refunds and returns below.</p>
+
+      <h2>Interpretation and Definitions</h2>
+      <h3>Definitions</h3>
+      <ul>
+        <li><strong>Company</strong> — TechnoFizi Solutions, a partnership firm, Jaipur, Rajasthan, India.</li>
+        <li><strong>Service</strong> — The services and digital products offered via this Website.</li>
+        <li><strong>Orders</strong> — A request by You to purchase a service or product from Us.</li>
+        <li><strong>Website</strong> — shubhamchugh.com, accessible from <a href="https://shubhamchugh.com">https://shubhamchugh.com</a></li>
+        <li><strong>You</strong> — The individual or legal entity accessing or using the Service.</li>
+      </ul>
+
+      <h2>Cancellation Rights</h2>
+      <p>You are entitled to cancel Your Order within <strong>7 days</strong> without giving any reason for doing so, provided the service has not yet been delivered or substantially commenced.</p>
+      <p>To exercise your right to cancel, you must inform Us by sending a clear statement to <a href="mailto:hey@shubhamchugh.com">hey@shubhamchugh.com</a> before the 7-day window expires.</p>
+
+      <h2>Refund Conditions</h2>
+      <p>We will issue a refund no later than <strong>14 days</strong> from the day We receive and approve your cancellation or return request. Refunds will be made via the same payment method You used for the original Order, at no additional cost to You.</p>
+      <p>The following are <strong>not eligible</strong> for a refund:</p>
+      <ul>
+        <li>Services that have already been fully delivered or completed.</li>
+        <li>Digital products or custom work made to Your specific requirements.</li>
+        <li>Services where work has substantially commenced with Your prior approval.</li>
+        <li>Subscription services after the current billing period has been used.</li>
+      </ul>
+
+      <h2>Non-Returnable Services</h2>
+      <p>Due to the nature of digital services and custom deliverables, the following cannot be returned:</p>
+      <ul>
+        <li>Ad campaign setup and management (once live and running).</li>
+        <li>Completed SEO audits or strategy documents.</li>
+        <li>Custom development work that has been delivered and accepted.</li>
+        <li>Any service where the deliverable has been handed over and used.</li>
+      </ul>
+
+      <h2>Disputed Work</h2>
+      <p>If You believe the work delivered does not match what was agreed upon, please contact Us within <strong>7 days of delivery</strong> at <a href="mailto:hey@shubhamchugh.com">hey@shubhamchugh.com</a>. We will review the situation and, where appropriate, offer revisions, partial refunds, or a full refund at our discretion.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have any questions about our Refund Policy, please contact us:</p>
+      <ul>
+        <li>By email: <a href="mailto:hey@shubhamchugh.com">hey@shubhamchugh.com</a></li>
+        <li>Company: TechnoFizi Solutions</li>
+        <li>Address: Jaipur, Rajasthan, India</li>
+      </ul>
+
+    </div>
+
+    <!-- Policy nav -->
+    <div class="flex flex-wrap gap-4 mt-16 pt-8" style="border-top: 1px solid var(--color-border);">
+      <a href="/terms"   style="font-size: 13px; color: var(--color-fg-3);" onmouseenter="this.style.color='var(--color-accent)'" onmouseleave="this.style.color='var(--color-fg-3)'">Terms &amp; Conditions</a>
+      <a href="/privacy" style="font-size: 13px; color: var(--color-fg-3);" onmouseenter="this.style.color='var(--color-accent)'" onmouseleave="this.style.color='var(--color-fg-3)'">Privacy Policy</a>
+      <a href="/refund"  style="font-size: 13px; color: var(--color-accent);">Refund Policy</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .policy-content {
+    color: var(--color-fg-2);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .policy-content h2 {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-fg-1);
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+  .policy-content h3 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-fg-2);
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .policy-content p {
+    margin-bottom: 16px;
+  }
+  .policy-content ul {
+    margin-bottom: 16px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .policy-content ul li {
+    list-style: disc;
+    padding-left: 4px;
+  }
+  .policy-content a {
+    color: var(--color-accent);
+    border-bottom: 1px solid rgba(232,98,42,0.3);
+    transition: border-color 150ms ease;
+  }
+  .policy-content a:hover {
+    border-bottom-color: var(--color-accent);
+  }
+  .policy-content strong {
+    color: var(--color-fg-1);
+    font-weight: 600;
+  }
+</style>

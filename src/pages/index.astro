@@ -4,9 +4,10 @@ import Layout from "../layouts/Layout.astro";
 const skills = [
   { category: "Languages & Frameworks", items: ["PHP", "Laravel", "Vue.js", "JavaScript", "HTML/CSS"] },
   { category: "CMS & E-commerce",       items: ["WordPress", "WooCommerce", "Elementor", "ACF"] },
+  { category: "Paid Advertising",        items: ["Meta Ads", "Google Ads", "Instagram Ads", "Retargeting"] },
+  { category: "Analytics & Tracking",    items: ["GA4", "Search Console", "GTM", "Meta Pixel"] },
+  { category: "SEO & Growth",            items: ["On-Page SEO", "Technical SEO", "Link Building", "Content Strategy"] },
   { category: "Infrastructure",          items: ["Linux/VPS", "Nginx", "Apache", "MySQL", "Redis", "Cloudflare"] },
-  { category: "Marketing & Growth",      items: ["SEO", "Google Analytics", "Search Console", "Link Building"] },
-  { category: "Tools & Workflow",        items: ["Git", "GitHub", "Composer", "Docker (basics)", "Figma"] },
 ];
 
 const projects = [
@@ -18,30 +19,43 @@ const projects = [
     status: "live",
     statusLabel: "Live",
     year: "2024 – Present",
-    type: "Solo SaaS",
+    type: "SaaS",
     url: "https://replyko.com",
   },
   {
-    name: "WordPress & SEO",
-    tagline: "Content sites, e-commerce, and ranking them",
-    desc: "Built and operated multiple content-driven WordPress sites and WooCommerce stores. Handled everything from on-page SEO to server configuration and deployment.",
-    stack: ["WordPress", "WooCommerce", "PHP", "SEO", "Nginx"],
+    name: "TechnoFizi",
+    tagline: "One of India's top tech blogs",
+    desc: "Built and scaled technofizi.net to become one of India's leading tech publications — hundreds of thousands of organic visitors, top Google rankings, and a full ad revenue model. Disrupted by LLMs, pivoted to SaaS.",
+    stack: ["WordPress", "SEO", "Google Ads", "AdSense", "Cloudflare"],
     status: "archive",
-    statusLabel: "Past work",
-    year: "2019 – 2022",
-    type: "Freelance & Own projects",
+    statusLabel: "Past",
+    year: "2017 – 2023",
+    type: "Own project",
     url: null,
   },
+];
+
+const adServices = [
   {
-    name: "Laravel Development",
-    tagline: "Custom web applications and backends",
-    desc: "Developed custom web apps using Laravel — from client projects to internal tooling. Database design, API integration, server deployment on VPS/Linux.",
-    stack: ["Laravel", "PHP", "MySQL", "Linux", "Nginx", "Redis"],
-    status: "archive",
-    statusLabel: "Past work",
-    year: "2020 – 2023",
-    type: "Freelance",
-    url: null,
+    title: "Google Ads",
+    sub: "Search · Display · Shopping",
+    desc: "Full campaign setup — keyword research, bidding strategy, ad copy, A/B testing, and ongoing optimization to lower your cost per acquisition.",
+    points: ["Search & Shopping Campaigns", "Display & Remarketing", "Conversion Tracking", "Budget Optimization"],
+    color: "#4285F4",
+  },
+  {
+    title: "Meta Ads",
+    sub: "Facebook · Instagram",
+    desc: "Audience building, creative strategy, and funnel setup across Facebook and Instagram — from brand awareness to direct-response campaigns.",
+    points: ["Audience & Interest Targeting", "Lookalike Audiences", "Retargeting Funnels", "Pixel & Event Setup"],
+    color: "#1877F2",
+  },
+  {
+    title: "Analytics & SEO",
+    sub: "GA4 · Search Console · GTM",
+    desc: "Proper tracking setup so you know exactly what's working. GA4, GTM, conversion events, plus organic SEO strategy built on 6+ years of experience.",
+    points: ["GA4 & GTM Configuration", "Conversion Event Tracking", "Technical SEO Audits", "Search Console Optimization"],
+    color: "#E37400",
   },
 ];
 ---
@@ -66,7 +80,7 @@ const projects = [
     </a>
 
     <div class="hidden md:flex items-center gap-7">
-      {[["building", "Building"], ["background", "Background"]].map(([id, label]) => (
+      {[["building", "Building"], ["marketing", "Marketing"], ["background", "Background"]].map(([id, label]) => (
         <button
           data-scroll={id}
           class="nav-btn text-sm text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150 bg-transparent border-none cursor-pointer p-0"
@@ -84,7 +98,6 @@ const projects = [
       </a>
     </div>
 
-    <!-- Mobile toggle -->
     <button
       id="navToggle"
       class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer"
@@ -101,78 +114,49 @@ const projects = [
     class="hidden fixed top-16 left-0 right-0 z-40 bg-[var(--color-bg)] border-b border-[var(--color-border)] px-8 py-5 flex-col gap-4"
     style="font-family: var(--font-sans);"
   >
-    <a href="#building" class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150">Building</a>
-    <a href="#background" class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150">Background</a>
+    <a href="#building"   class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors">Building</a>
+    <a href="#marketing"  class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors">Marketing</a>
+    <a href="#background" class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors">Background</a>
     <a href="mailto:hey@shubhamchugh.com" class="text-sm text-[var(--color-accent)]">hey@shubhamchugh.com ↗</a>
   </div>
 
   <!-- ═══════════════════════════════════════
        MAIN CONTENT
   ═══════════════════════════════════════ -->
-  <main
-    class="max-w-[720px] mx-auto px-6"
-    style="padding-top: 0;"
-  >
+  <main class="max-w-[720px] mx-auto px-6" style="padding-top: 0;">
 
-    <!-- ── HERO ─────────────────────────────── -->
+    <!-- ── HERO ───────────────────────────── -->
     <section class="min-h-screen flex items-center" style="padding: 120px 0 96px;">
       <div class="w-full">
 
-        <!-- Avatar -->
         <div class="hero-item mb-8" style="transition-delay: 0ms;">
           <div
             class="w-24 h-24 rounded-full overflow-hidden border-2"
             style="background: var(--color-raised); border-color: var(--color-border);"
           >
-            <img
-              src="/avatar.jpg"
-              alt="Shubham Chugh"
-              class="w-full h-full object-cover object-top"
-              width="96"
-              height="96"
-            />
+            <img src="/avatar.jpg" alt="Shubham Chugh" class="w-full h-full object-cover object-top" width="96" height="96" />
           </div>
         </div>
 
-        <!-- Greeting -->
         <div class="hero-item mb-1" style="transition-delay: 80ms;">
-          <span
-            class="text-[var(--color-fg-2)]"
-            style="font-family: var(--font-sans); font-size: 18px; font-weight: 400; letter-spacing: 0.01em;"
-          >Hi, I'm</span>
+          <span class="text-[var(--color-fg-2)]" style="font-family: var(--font-sans); font-size: 18px; font-weight: 400; letter-spacing: 0.01em;">Hi, I'm</span>
         </div>
 
-        <!-- Name -->
-        <div class="hero-item" style="transition-delay: 160ms; line-height: 1.0; margin-bottom: 4px;">
-          <div
-            style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-accent); letter-spacing: -0.03em; line-height: 1.0;"
-          >Shubham</div>
-          <div
-            style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.03em; line-height: 1.0;"
-          >Chugh.</div>
+        <div class="hero-item" style="transition-delay: 160ms; margin-bottom: 4px;">
+          <div style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-accent); letter-spacing: -0.03em; line-height: 1.0;">Shubham</div>
+          <div style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.03em; line-height: 1.0;">Chugh.</div>
         </div>
 
-        <!-- Tagline -->
         <div class="hero-item mt-7 mb-5" style="transition-delay: 280ms;">
-          <p
-            class="text-[var(--color-fg-2)] max-w-[520px]"
-            style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; line-height: 1.6;"
-          >
-            I build things on the internet. Solo founder, currently working on{" "}
-            <a
-              href="https://replyko.com"
-              target="_blank"
-              rel="noopener"
-              class="accent-link"
-              style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);"
-            >ReplyKo</a>
-            {" "}— Instagram automation for creators and agencies.
+          <p class="text-[var(--color-fg-2)] max-w-[540px]" style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; line-height: 1.6;">
+            Developer, SEO veteran, and performance marketer — building{" "}
+            <a href="https://replyko.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">ReplyKo</a>
+            {" "}and helping brands scale with Google & Meta ads.
           </p>
         </div>
 
-        <!-- Tech stack chips -->
         <div class="hero-item flex flex-wrap gap-2 mb-9" style="transition-delay: 360ms;">
-          {["Laravel", "WordPress", "Vue.js", "SEO", "VPS/Linux", "PHP"].map((tech) => (
+          {["Laravel", "Meta Ads", "Google Ads", "SEO", "WordPress", "Analytics"].map((tech) => (
             <span
               class="text-[var(--color-fg-3)] border border-[var(--color-border)]"
               style="font-family: var(--font-mono); font-size: 12px; background: var(--color-raised); padding: 4px 10px; border-radius: 6px;"
@@ -180,13 +164,12 @@ const projects = [
           ))}
         </div>
 
-        <!-- Social links -->
         <div class="hero-item flex flex-wrap gap-6 items-center" style="transition-delay: 440ms;">
           {[
-            ["GitHub", "https://github.com/theshubhamchugh"],
-            ["YouTube", "https://www.youtube.com/@theshubhamchugh"],
+            ["GitHub",    "https://github.com/theshubhamchugh"],
+            ["YouTube",   "https://www.youtube.com/@theshubhamchugh"],
             ["Twitter/X", "https://x.com/theshubhamchugh"],
-            ["Email", "mailto:hey@shubhamchugh.com"],
+            ["Email",     "mailto:hey@shubhamchugh.com"],
           ].map(([label, href]) => (
             <a
               href={href}
@@ -194,23 +177,16 @@ const projects = [
               rel="noopener"
               class="social-link text-[var(--color-fg-2)] hover:text-[var(--color-accent)] transition-colors duration-150 flex items-center gap-1"
               style="font-family: var(--font-sans); font-size: 14px;"
-            >
-              {label} ↗
-            </a>
+            >{label} ↗</a>
           ))}
         </div>
 
       </div>
     </section>
 
-    <!-- ── PROJECTS ───────────────────────────── -->
+    <!-- ── PROJECTS ──────────────────────── -->
     <section id="building" class="py-24 reveal">
-
-      <h2
-        class="text-[var(--color-fg-3)] mb-8 tracking-[0.12em] uppercase"
-        style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;"
-      >What I've Built</h2>
-
+      <h2 class="text-[var(--color-fg-3)] mb-8 tracking-[0.12em] uppercase" style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;">What I've Built</h2>
       <div class="flex flex-col gap-4">
         {projects.map((p, i) => {
           const isLive = p.status === "live";
@@ -220,14 +196,10 @@ const projects = [
               style={`padding: ${i === 0 ? "28px" : "24px"};`}
               data-url={p.url || ""}
             >
-              <!-- Header -->
               <div class="flex justify-between items-start mb-3">
                 <div>
                   <div class="flex items-center gap-2.5 mb-1.5">
-                    <h3
-                      class="text-[var(--color-fg-1)]"
-                      style={`font-family: var(--font-sans); font-size: ${i === 0 ? "20px" : "17px"}; font-weight: 600;`}
-                    >{p.name}</h3>
+                    <h3 class="text-[var(--color-fg-1)]" style={`font-family: var(--font-sans); font-size: ${i === 0 ? "20px" : "17px"}; font-weight: 600;`}>{p.name}</h3>
                     <span
                       class="text-[10px] font-semibold tracking-[0.04em] uppercase px-2 py-0.5 rounded-full whitespace-nowrap"
                       style={isLive
@@ -235,35 +207,15 @@ const projects = [
                         : "color: var(--color-fg-2); background: var(--color-raised); border: 1px solid var(--color-border);"}
                     >{p.statusLabel}</span>
                   </div>
-                  <p
-                    class="text-[var(--color-fg-3)]"
-                    style="font-family: var(--font-sans); font-size: 13px;"
-                  >{p.type} · {p.year}</p>
+                  <p class="text-[var(--color-fg-3)]" style="font-family: var(--font-sans); font-size: 13px;">{p.type} · {p.year}</p>
                 </div>
-                {p.url && (
-                  <span class="card-arrow text-[var(--color-border-em)] transition-colors duration-150 text-lg">↗</span>
-                )}
+                {p.url && <span class="card-arrow text-[var(--color-border-em)] transition-colors duration-150 text-lg">↗</span>}
               </div>
-
-              <!-- Tagline -->
-              <p
-                class="text-[var(--color-fg-2)] mb-4"
-                style="font-family: var(--font-sans); font-size: 13px; font-weight: 500;"
-              >{p.tagline}</p>
-
-              <!-- Description -->
-              <p
-                class="text-[var(--color-fg-2)] mb-4"
-                style="font-family: var(--font-sans); font-size: 15px; line-height: 1.65;"
-              >{p.desc}</p>
-
-              <!-- Stack -->
+              <p class="text-[var(--color-fg-2)] mb-4" style="font-family: var(--font-sans); font-size: 13px; font-weight: 500;">{p.tagline}</p>
+              <p class="text-[var(--color-fg-2)] mb-4" style="font-family: var(--font-sans); font-size: 15px; line-height: 1.65;">{p.desc}</p>
               <div class="flex flex-wrap gap-1.5">
                 {p.stack.map((tech) => (
-                  <span
-                    class="text-[var(--color-fg-3)] border border-[var(--color-border)]"
-                    style="font-family: var(--font-mono); font-size: 11px; background: var(--color-surface); padding: 3px 8px; border-radius: 5px;"
-                  >{tech}</span>
+                  <span class="text-[var(--color-fg-3)] border border-[var(--color-border)]" style="font-family: var(--font-mono); font-size: 11px; background: var(--color-surface); padding: 3px 8px; border-radius: 5px;">{tech}</span>
                 ))}
               </div>
             </div>
@@ -272,48 +224,201 @@ const projects = [
       </div>
     </section>
 
-    <!-- ── BACKGROUND ────────────────────────── -->
+    <!-- ── MARKETING & ADS ───────────────── -->
+    <section id="marketing" class="py-24 border-t border-[var(--color-border)] reveal">
+
+      <h2 class="text-[var(--color-fg-3)] mb-4 tracking-[0.12em] uppercase" style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;">Marketing & Paid Ads</h2>
+
+      <p class="text-[var(--color-fg-2)] mb-3 max-w-[560px] reveal reveal-d1" style="font-family: var(--font-sans); font-size: 18px; line-height: 1.7;">
+        I grew TechnoFizi to one of India's top tech blogs purely through SEO and content — before moving into paid performance marketing.
+      </p>
+      <p class="text-[var(--color-fg-2)] mb-12 max-w-[560px] reveal reveal-d2" style="font-family: var(--font-sans); font-size: 15px; line-height: 1.75; color: var(--color-fg-3);">
+        I approach ads as a system: the right audience, compelling creatives, proper pixel and conversion tracking, and continuous data-driven optimization. Whether you need Google search campaigns or Meta retargeting funnels — I've done it.
+      </p>
+
+      <!-- Service cards -->
+      <div class="grid gap-4 mb-14 reveal reveal-d2" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        {adServices.map((s) => (
+          <div
+            class="bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl p-5 flex flex-col gap-3 transition-all duration-250 service-card"
+          >
+            <div>
+              <div class="flex items-center gap-2 mb-0.5">
+                <span
+                  class="inline-block w-2 h-2 rounded-full"
+                  style={`background: ${s.color};`}
+                ></span>
+                <h3 class="text-[var(--color-fg-1)] font-semibold" style="font-family: var(--font-sans); font-size: 15px;">{s.title}</h3>
+              </div>
+              <p class="text-[var(--color-fg-3)]" style="font-family: var(--font-mono); font-size: 11px;">{s.sub}</p>
+            </div>
+            <p class="text-[var(--color-fg-2)]" style="font-family: var(--font-sans); font-size: 13px; line-height: 1.6;">{s.desc}</p>
+            <ul class="flex flex-col gap-1 mt-auto">
+              {s.points.map((pt) => (
+                <li class="flex items-start gap-2 text-[var(--color-fg-3)]" style="font-family: var(--font-sans); font-size: 12px;">
+                  <span style={`color: ${s.color}; font-size: 10px; margin-top: 3px; flex-shrink: 0;`}>▸</span>
+                  {pt}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- Tool icons -->
+      <div class="mb-6 reveal reveal-d3">
+        <p class="text-[var(--color-fg-3)] mb-5 uppercase tracking-[0.1em]" style="font-family: var(--font-sans); font-size: 11px; font-weight: 600;">Tools I work with daily</p>
+        <div class="grid gap-3" style="grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));">
+
+          <!-- Google Ads -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Google Ads</span>
+          </div>
+
+          <!-- Meta Ads -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Meta Ads</span>
+          </div>
+
+          <!-- Google Analytics 4 -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4"  y="22" width="8" height="14" rx="2" fill="#E37400"/>
+                <rect x="16" y="13" width="8" height="23" rx="2" fill="#F9AB00"/>
+                <rect x="28" y="4"  width="8" height="32" rx="2" fill="#E37400"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Analytics 4</span>
+          </div>
+
+          <!-- Google Search Console -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="17" cy="17" r="10" stroke="#4285F4" stroke-width="3"/>
+                <circle cx="17" cy="17" r="4"  fill="#EA4335"/>
+                <path d="M24 24L35 35" stroke="#34A853" stroke-width="3.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Search Console</span>
+          </div>
+
+          <!-- Google Tag Manager -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6h18l10 14-10 14H6z" fill="#246FDB" rx="3"/>
+                <circle cx="20" cy="20" r="5" fill="white"/>
+                <circle cx="20" cy="20" r="2.5" fill="#246FDB"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Tag Manager</span>
+          </div>
+
+          <!-- WordPress -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 19.5c-5.247 0-9.5-4.253-9.5-9.5S6.753 2.5 12 2.5s9.5 4.253 9.5 9.5-4.253 9.5-9.5 9.5z" fill="#21759B"/>
+                <path d="M3.543 12c0 3.603 2.097 6.731 5.14 8.232L4.165 9.245A8.45 8.45 0 003.543 12zm14.39-.823c0-1.124-.404-1.903-.75-2.509-.46-.749-.893-1.383-.893-2.132 0-.835.634-1.613 1.527-1.613.04 0 .079.005.118.007A8.453 8.453 0 0012 3.543c-2.957 0-5.554 1.516-7.07 3.81.199.006.386.01.546.01 1.24 0 3.161-.15 3.161-.15.639-.038.714.9.076.975 0 0-.643.076-1.359.113l4.323 12.852 2.598-7.785-1.85-5.067c-.639-.037-1.245-.113-1.245-.113-.639-.038-.564-1.013.075-.975 0 0 1.96.15 3.124.15 1.241 0 3.162-.15 3.162-.15.64-.038.715.9.076.975 0 0-.644.076-1.358.113l4.29 12.764.185-.617c.6-1.928.955-3.31.955-4.491z" fill="#21759B"/>
+                <path d="M12.337 12.902l-3.562 10.35c1.064.313 2.187.481 3.348.481a8.468 8.468 0 003.506-.754 1.24 1.24 0 01-.09-.174l-3.202-8.903zm7.325-4.83a6.59 6.59 0 01.058.866c0 .854-.16 1.814-.639 3.014l-2.565 7.415c2.498-1.456 4.176-4.14 4.176-7.224a8.42 8.42 0 00-1.03-4.07z" fill="#21759B"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">WordPress</span>
+          </div>
+
+          <!-- Meta Pixel -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4"  y="4"  width="14" height="14" rx="3" fill="#1877F2"/>
+                <rect x="22" y="4"  width="14" height="14" rx="3" fill="#1877F2" opacity=".6"/>
+                <rect x="4"  y="22" width="14" height="14" rx="3" fill="#1877F2" opacity=".6"/>
+                <rect x="22" y="22" width="14" height="14" rx="3" fill="#1877F2" opacity=".3"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Meta Pixel</span>
+          </div>
+
+          <!-- Hotjar -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4z" fill="#FF3C00"/>
+                <path d="M14 12v16M20 12v10c0 2.21 1.79 4 4 4" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">Hotjar</span>
+          </div>
+
+          <!-- SEMrush -->
+          <div class="tool-icon-card flex flex-col items-center gap-2 p-4 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-200">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <svg viewBox="0 0 40 40" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#FF642D"/>
+                <path d="M10 28l6-16 4 10 3-6 7 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-[var(--color-fg-3)] text-center" style="font-family: var(--font-sans); font-size: 10px; line-height: 1.3;">SEMrush</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 p-6 bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl reveal reveal-d4" style="border-left: 3px solid var(--color-accent);">
+        <p class="text-[var(--color-fg-1)] mb-1" style="font-family: var(--font-sans); font-size: 16px; font-weight: 600;">Looking to grow your business with ads?</p>
+        <p class="text-[var(--color-fg-2)] mb-4" style="font-family: var(--font-sans); font-size: 14px; line-height: 1.6;">I'm available for Google Ads, Meta Ads, and analytics setups. Drop me an email and let's talk about what you're trying to achieve.</p>
+        <a
+          href="mailto:hey@shubhamchugh.com"
+          class="inline-flex items-center gap-2 text-[var(--color-accent)] border border-[rgba(232,98,42,0.35)] hover:border-[var(--color-accent)] hover:bg-[rgba(232,98,42,0.08)] px-4 py-2 rounded-lg transition-all duration-150"
+          style="font-family: var(--font-sans); font-size: 13px; font-weight: 500;"
+        >
+          hey@shubhamchugh.com ↗
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ── BACKGROUND ────────────────────── -->
     <section id="background" class="py-24 border-t border-[var(--color-border)] reveal">
 
-      <h2
-        class="text-[var(--color-fg-3)] mb-4 tracking-[0.12em] uppercase"
-        style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;"
-      >Background</h2>
+      <h2 class="text-[var(--color-fg-3)] mb-4 tracking-[0.12em] uppercase" style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;">Background</h2>
 
-      <p
-        class="text-[var(--color-fg-2)] mb-10 max-w-[560px] reveal reveal-d1"
-        style="font-family: var(--font-sans); font-size: 18px; line-height: 1.7;"
-      >
-        I've been building on the web for years — from blogs and WordPress sites to Laravel apps and SaaS products.
+      <p class="text-[var(--color-fg-2)] mb-10 max-w-[560px] reveal reveal-d1" style="font-family: var(--font-sans); font-size: 18px; line-height: 1.7;">
+        I've been building on the web for years — from blogs and WordPress sites to Laravel apps, SaaS products, and ad campaigns.
         Started in Sri Ganganagar, moved to Jaipur for college (B.Tech IT, UDML), and never stopped shipping.
       </p>
 
-      <!-- About me paragraph -->
-      <p
-        class="text-[var(--color-fg-2)] mb-12 reveal reveal-d2"
-        style="font-family: var(--font-sans); font-size: 16px; line-height: 1.75;"
-      >
-        I started with blogging and WordPress — learning SEO, content, and how online businesses actually work.
-        Then moved into Laravel and custom development. Today, through
+      <p class="text-[var(--color-fg-2)] mb-12 reveal reveal-d2" style="font-family: var(--font-sans); font-size: 16px; line-height: 1.75;">
+        Started with blogging and WordPress — learning SEO, content, and how online businesses actually work.
+        Then moved into Laravel, paid ads, and custom development. Today, through
         <span class="text-[var(--color-fg-1)] font-medium"> TechnoFizi Solutions</span>
-        (est. 2017, Jaipur), I build my own products and help clients grow on the web.
+        (partnership firm, est. 2017, Jaipur), we build products and help clients grow on the web.
         My current focus is <a href="https://replyko.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">ReplyKo</a>.
       </p>
 
-      <!-- Skills grid -->
       <div class="flex flex-col gap-5 reveal reveal-d3">
         {skills.map(({ category, items }) => (
           <div class="flex gap-5 items-start">
-            <span
-              class="text-[var(--color-fg-3)] shrink-0 pt-0.5"
-              style="font-family: var(--font-sans); font-size: 13px; width: 190px;"
-            >{category}</span>
+            <span class="text-[var(--color-fg-3)] shrink-0 pt-0.5" style="font-family: var(--font-sans); font-size: 13px; width: 190px;">{category}</span>
             <div class="flex flex-wrap gap-1.5">
               {items.map((item) => (
-                <span
-                  class="text-[var(--color-fg-2)] border border-[var(--color-border)]"
-                  style="font-family: var(--font-mono); font-size: 12px; background: var(--color-raised); padding: 4px 10px; border-radius: 6px;"
-                >{item}</span>
+                <span class="text-[var(--color-fg-2)] border border-[var(--color-border)]" style="font-family: var(--font-mono); font-size: 12px; background: var(--color-raised); padding: 4px 10px; border-radius: 6px;">{item}</span>
               ))}
             </div>
           </div>
@@ -321,7 +426,7 @@ const projects = [
       </div>
     </section>
 
-    <!-- ── TESTIMONIAL ───────────────────────── -->
+    <!-- ── TESTIMONIAL ───────────────────── -->
     <section class="py-20 border-t border-[var(--color-border)] reveal">
       <blockquote
         class="text-[var(--color-fg-2)] max-w-[580px] mb-5 pl-5"
@@ -329,10 +434,7 @@ const projects = [
       >
         "Shubham has a knack for building practical tools that actually get used. He ships fast, thinks about the user, and handles the whole stack himself."
       </blockquote>
-      <div
-        class="text-[var(--color-fg-3)] pl-5"
-        style="font-family: var(--font-sans); font-size: 14px;"
-      >— A colleague · ReplyKo beta tester</div>
+      <div class="text-[var(--color-fg-3)] pl-5" style="font-family: var(--font-sans); font-size: 14px;">— A colleague · ReplyKo beta tester</div>
     </section>
 
   </main>
@@ -341,46 +443,65 @@ const projects = [
        FOOTER
   ═══════════════════════════════════════ -->
   <footer
-    class="max-w-[720px] mx-auto px-6 py-10 mt-4 border-t border-[var(--color-border)] flex flex-wrap justify-between items-center gap-4"
+    class="border-t border-[var(--color-border)] mt-4"
     style="font-family: var(--font-sans);"
   >
-    <div>
-      <div
-        class="mb-1.5"
-        style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.02em;"
-      >
-        <span style="color: var(--color-accent);">S</span>hubham Chugh
-      </div>
-      <div style="font-size: 13px; color: var(--color-fg-3);">India · Solo founder &amp; developer</div>
-    </div>
+    <div class="max-w-[720px] mx-auto px-6 py-10">
 
-    <div class="flex flex-col items-end gap-2.5">
-      <div class="flex gap-5">
-        {[
-          ["GitHub", "https://github.com/theshubhamchugh"],
-          ["YouTube", "https://www.youtube.com/@theshubhamchugh"],
-          ["Twitter/X", "https://x.com/theshubhamchugh"],
-        ].map(([label, href]) => (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener"
-            class="footer-link text-[var(--color-fg-3)] hover:text-[var(--color-accent)] transition-colors duration-150"
-            style="font-size: 13px;"
-          >{label}</a>
-        ))}
+      <!-- Top row -->
+      <div class="flex flex-wrap justify-between items-start gap-8 mb-8">
+
+        <!-- Brand + company -->
+        <div class="max-w-[280px]">
+          <div class="mb-1" style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.02em;">
+            <span style="color: var(--color-accent);">S</span>hubham Chugh
+          </div>
+          <div class="mb-3" style="font-size: 13px; color: var(--color-fg-3);">
+            TechnoFizi Solutions · Partnership Firm · Est. 2017
+          </div>
+          <div style="font-size: 13px; color: var(--color-fg-3); line-height: 1.6;">
+            Jaipur, Rajasthan, India<br/>
+            <a href="mailto:hey@shubhamchugh.com" class="hover:text-[var(--color-accent)] transition-colors">hey@shubhamchugh.com</a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex gap-12">
+          <div class="flex flex-col gap-2">
+            <span class="text-[var(--color-fg-3)] uppercase tracking-[0.1em] mb-1" style="font-size: 10px; font-weight: 600;">Connect</span>
+            {[
+              ["GitHub",    "https://github.com/theshubhamchugh"],
+              ["YouTube",   "https://www.youtube.com/@theshubhamchugh"],
+              ["Twitter/X", "https://x.com/theshubhamchugh"],
+            ].map(([label, href]) => (
+              <a href={href} target="_blank" rel="noopener" class="footer-link text-[var(--color-fg-3)] hover:text-[var(--color-accent)] transition-colors" style="font-size: 13px;">{label}</a>
+            ))}
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="text-[var(--color-fg-3)] uppercase tracking-[0.1em] mb-1" style="font-size: 10px; font-weight: 600;">Legal</span>
+            {[
+              ["Terms & Conditions", "/terms"],
+              ["Privacy Policy",     "/privacy"],
+              ["Refund Policy",      "/refund"],
+            ].map(([label, href]) => (
+              <a href={href} class="footer-link text-[var(--color-fg-3)] hover:text-[var(--color-accent)] transition-colors" style="font-size: 13px;">{label}</a>
+            ))}
+          </div>
+        </div>
+
       </div>
-      <a
-        href="mailto:hey@shubhamchugh.com"
-        class="footer-link text-[var(--color-fg-2)] hover:text-[var(--color-accent)] transition-colors duration-150"
-        style="font-size: 13px;"
-      >hey@shubhamchugh.com</a>
+
+      <!-- Bottom row -->
+      <div class="flex flex-wrap justify-between items-center gap-3 pt-6 border-t border-[var(--color-border)]">
+        <span style="font-size: 12px; color: var(--color-fg-3);">© {new Date().getFullYear()} TechnoFizi Solutions. All rights reserved.</span>
+        <span style="font-size: 12px; color: var(--color-fg-3);">Jaipur, India</span>
+      </div>
     </div>
   </footer>
+
 </Layout>
 
 <script>
-  // ── Nav scroll effect ──────────────────────
   const nav = document.getElementById("nav");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 20) {
@@ -394,7 +515,6 @@ const projects = [
     }
   });
 
-  // ── Nav scroll buttons ─────────────────────
   document.querySelectorAll("[data-scroll]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = (btn as HTMLElement).dataset.scroll!;
@@ -406,7 +526,6 @@ const projects = [
     });
   });
 
-  // ── Mobile nav ────────────────────────────
   const toggle = document.getElementById("navToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   toggle?.addEventListener("click", () => {
@@ -421,18 +540,11 @@ const projects = [
     });
   });
 
-  // ── Hero fade-in on load ───────────────────
   const heroItems = document.querySelectorAll(".hero-item");
   heroItems.forEach((el) => {
     (el as HTMLElement).style.opacity = "0";
     (el as HTMLElement).style.transform = "translateY(20px)";
   });
-
-  const delay = (el: Element) => {
-    const d = parseFloat((el as HTMLElement).style.transitionDelay || "0");
-    return d;
-  };
-
   requestAnimationFrame(() => {
     heroItems.forEach((el) => {
       const d = parseFloat((el as HTMLElement).style.transitionDelay ?? "0");
@@ -444,7 +556,6 @@ const projects = [
     });
   });
 
-  // ── Scroll reveal ─────────────────────────
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -458,11 +569,9 @@ const projects = [
   );
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-  // ── Project card hover + click ────────────
   document.querySelectorAll(".project-card").forEach((card) => {
     const url = (card as HTMLElement).dataset.url;
     const arrow = card.querySelector(".card-arrow");
-
     card.addEventListener("mouseenter", () => {
       (card as HTMLElement).style.transform = "translateY(-3px)";
       (card as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.45)";
@@ -475,18 +584,33 @@ const projects = [
       (card as HTMLElement).style.borderColor = "#28282f";
       if (arrow) (arrow as HTMLElement).style.color = "#3a3a44";
     });
-    if (url) {
-      card.addEventListener("click", () => window.open(url, "_blank"));
-    }
+    if (url) card.addEventListener("click", () => window.open(url, "_blank"));
   });
 
-  // ── Accent link hover ─────────────────────
+  document.querySelectorAll(".service-card").forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      (card as HTMLElement).style.transform = "translateY(-2px)";
+      (card as HTMLElement).style.borderColor = "#3a3a44";
+    });
+    card.addEventListener("mouseleave", () => {
+      (card as HTMLElement).style.transform = "translateY(0)";
+      (card as HTMLElement).style.borderColor = "#28282f";
+    });
+  });
+
+  document.querySelectorAll(".tool-icon-card").forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      (card as HTMLElement).style.transform = "translateY(-2px)";
+      (card as HTMLElement).style.borderColor = "#3a3a44";
+    });
+    card.addEventListener("mouseleave", () => {
+      (card as HTMLElement).style.transform = "translateY(0)";
+      (card as HTMLElement).style.borderColor = "#28282f";
+    });
+  });
+
   document.querySelectorAll(".accent-link").forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      (el as HTMLElement).style.borderBottomColor = "#e8622a";
-    });
-    el.addEventListener("mouseleave", () => {
-      (el as HTMLElement).style.borderBottomColor = "rgba(232,98,42,0.35)";
-    });
+    el.addEventListener("mouseenter", () => { (el as HTMLElement).style.borderBottomColor = "#e8622a"; });
+    el.addEventListener("mouseleave", () => { (el as HTMLElement).style.borderBottomColor = "rgba(232,98,42,0.35)"; });
   });
 </script>
