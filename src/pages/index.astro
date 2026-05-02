@@ -1,11 +1,492 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const skills = [
+  { category: "Languages & Frameworks", items: ["PHP", "Laravel", "Vue.js", "JavaScript", "HTML/CSS"] },
+  { category: "CMS & E-commerce",       items: ["WordPress", "WooCommerce", "Elementor", "ACF"] },
+  { category: "Infrastructure",          items: ["Linux/VPS", "Nginx", "Apache", "MySQL", "Redis", "Cloudflare"] },
+  { category: "Marketing & Growth",      items: ["SEO", "Google Analytics", "Search Console", "Link Building"] },
+  { category: "Tools & Workflow",        items: ["Git", "GitHub", "Composer", "Docker (basics)", "Figma"] },
+];
+
+const projects = [
+  {
+    name: "ReplyKo",
+    tagline: "Instagram automation for creators & agencies",
+    desc: "Auto-reply to DMs and comments on Instagram. Built for creators, agencies, and social media teams who need to scale engagement without manual effort.",
+    stack: ["Laravel", "Vue.js", "MySQL", "Instagram API"],
+    status: "live",
+    statusLabel: "Live",
+    year: "2024 – Present",
+    type: "Solo SaaS",
+    url: "https://replyko.com",
+  },
+  {
+    name: "WordPress & SEO",
+    tagline: "Content sites, e-commerce, and ranking them",
+    desc: "Built and operated multiple content-driven WordPress sites and WooCommerce stores. Handled everything from on-page SEO to server configuration and deployment.",
+    stack: ["WordPress", "WooCommerce", "PHP", "SEO", "Nginx"],
+    status: "archive",
+    statusLabel: "Past work",
+    year: "2019 – 2022",
+    type: "Freelance & Own projects",
+    url: null,
+  },
+  {
+    name: "Laravel Development",
+    tagline: "Custom web applications and backends",
+    desc: "Developed custom web apps using Laravel — from client projects to internal tooling. Database design, API integration, server deployment on VPS/Linux.",
+    stack: ["Laravel", "PHP", "MySQL", "Linux", "Nginx", "Redis"],
+    status: "archive",
+    statusLabel: "Past work",
+    year: "2020 – 2023",
+    type: "Freelance",
+    url: null,
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav
+    id="nav"
+    class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-8 justify-between
+           border-b border-transparent
+           transition-all duration-300"
+    style="font-family: var(--font-sans);"
+  >
+    <a
+      href="/"
+      class="text-[var(--color-fg-1)] hover:text-[var(--color-fg-1)] transition-none"
+      style="font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: -0.02em;"
+    >
+      <span style="color: var(--color-accent);">S</span>hubham Chugh
+    </a>
+
+    <div class="hidden md:flex items-center gap-7">
+      {[["building", "Building"], ["background", "Background"]].map(([id, label]) => (
+        <button
+          data-scroll={id}
+          class="nav-btn text-sm text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150 bg-transparent border-none cursor-pointer p-0"
+          style="font-family: var(--font-sans); letter-spacing: 0.01em;"
+        >
+          {label}
+        </button>
+      ))}
+      <a
+        href="mailto:hey@shubhamchugh.com"
+        class="text-xs font-medium text-[var(--color-accent)] hover:bg-[rgba(232,98,42,0.12)] border border-[rgba(232,98,42,0.35)] hover:border-[var(--color-accent)] px-4 py-1.5 rounded-lg transition-all duration-150"
+        style="font-family: var(--font-sans); font-size: 13px;"
+      >
+        Get in touch ↗
+      </a>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      id="navToggle"
+      class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer"
+      aria-label="Menu"
+    >
+      <span class="block w-5 h-0.5 bg-[var(--color-fg-2)] rounded-sm"></span>
+      <span class="block w-5 h-0.5 bg-[var(--color-fg-2)] rounded-sm"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobileMenu"
+    class="hidden fixed top-16 left-0 right-0 z-40 bg-[var(--color-bg)] border-b border-[var(--color-border)] px-8 py-5 flex-col gap-4"
+    style="font-family: var(--font-sans);"
+  >
+    <a href="#building" class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150">Building</a>
+    <a href="#background" class="mobile-nav-link text-base text-[var(--color-fg-2)] hover:text-[var(--color-fg-1)] transition-colors duration-150">Background</a>
+    <a href="mailto:hey@shubhamchugh.com" class="text-sm text-[var(--color-accent)]">hey@shubhamchugh.com ↗</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════ -->
+  <main
+    class="max-w-[720px] mx-auto px-6"
+    style="padding-top: 0;"
+  >
+
+    <!-- ── HERO ─────────────────────────────── -->
+    <section class="min-h-screen flex items-center" style="padding: 120px 0 96px;">
+      <div class="w-full">
+
+        <!-- Avatar -->
+        <div class="hero-item mb-8" style="transition-delay: 0ms;">
+          <div
+            class="w-24 h-24 rounded-full overflow-hidden border-2"
+            style="background: var(--color-raised); border-color: var(--color-border);"
+          >
+            <img
+              src="/avatar.jpg"
+              alt="Shubham Chugh"
+              class="w-full h-full object-cover object-top"
+              width="96"
+              height="96"
+            />
+          </div>
+        </div>
+
+        <!-- Greeting -->
+        <div class="hero-item mb-1" style="transition-delay: 80ms;">
+          <span
+            class="text-[var(--color-fg-2)]"
+            style="font-family: var(--font-sans); font-size: 18px; font-weight: 400; letter-spacing: 0.01em;"
+          >Hi, I'm</span>
+        </div>
+
+        <!-- Name -->
+        <div class="hero-item" style="transition-delay: 160ms; line-height: 1.0; margin-bottom: 4px;">
+          <div
+            style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-accent); letter-spacing: -0.03em; line-height: 1.0;"
+          >Shubham</div>
+          <div
+            style="font-family: var(--font-display); font-size: clamp(56px, 10vw, 96px); font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.03em; line-height: 1.0;"
+          >Chugh.</div>
+        </div>
+
+        <!-- Tagline -->
+        <div class="hero-item mt-7 mb-5" style="transition-delay: 280ms;">
+          <p
+            class="text-[var(--color-fg-2)] max-w-[520px]"
+            style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; line-height: 1.6;"
+          >
+            I build things on the internet. Solo founder, currently working on{" "}
+            <a
+              href="https://replyko.com"
+              target="_blank"
+              rel="noopener"
+              class="accent-link"
+              style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);"
+            >ReplyKo</a>
+            {" "}— Instagram automation for creators and agencies.
+          </p>
+        </div>
+
+        <!-- Tech stack chips -->
+        <div class="hero-item flex flex-wrap gap-2 mb-9" style="transition-delay: 360ms;">
+          {["Laravel", "WordPress", "Vue.js", "SEO", "VPS/Linux", "PHP"].map((tech) => (
+            <span
+              class="text-[var(--color-fg-3)] border border-[var(--color-border)]"
+              style="font-family: var(--font-mono); font-size: 12px; background: var(--color-raised); padding: 4px 10px; border-radius: 6px;"
+            >{tech}</span>
+          ))}
+        </div>
+
+        <!-- Social links -->
+        <div class="hero-item flex flex-wrap gap-6 items-center" style="transition-delay: 440ms;">
+          {[
+            ["GitHub", "https://github.com/theshubhamchugh"],
+            ["YouTube", "https://www.youtube.com/@theshubhamchugh"],
+            ["Twitter/X", "https://x.com/theshubhamchugh"],
+            ["Email", "mailto:hey@shubhamchugh.com"],
+          ].map(([label, href]) => (
+            <a
+              href={href}
+              target={href.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener"
+              class="social-link text-[var(--color-fg-2)] hover:text-[var(--color-accent)] transition-colors duration-150 flex items-center gap-1"
+              style="font-family: var(--font-sans); font-size: 14px;"
+            >
+              {label} ↗
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ───────────────────────────── -->
+    <section id="building" class="py-24 reveal">
+
+      <h2
+        class="text-[var(--color-fg-3)] mb-8 tracking-[0.12em] uppercase"
+        style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;"
+      >What I've Built</h2>
+
+      <div class="flex flex-col gap-4">
+        {projects.map((p, i) => {
+          const isLive = p.status === "live";
+          return (
+            <div
+              class={`project-card reveal reveal-d${Math.min(i + 1, 4)} bg-[var(--color-raised)] border border-[var(--color-border)] rounded-xl transition-all duration-250 ${p.url ? "cursor-pointer" : ""}`}
+              style={`padding: ${i === 0 ? "28px" : "24px"};`}
+              data-url={p.url || ""}
+            >
+              <!-- Header -->
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <div class="flex items-center gap-2.5 mb-1.5">
+                    <h3
+                      class="text-[var(--color-fg-1)]"
+                      style={`font-family: var(--font-sans); font-size: ${i === 0 ? "20px" : "17px"}; font-weight: 600;`}
+                    >{p.name}</h3>
+                    <span
+                      class="text-[10px] font-semibold tracking-[0.04em] uppercase px-2 py-0.5 rounded-full whitespace-nowrap"
+                      style={isLive
+                        ? "color: #4ade80; background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.25);"
+                        : "color: var(--color-fg-2); background: var(--color-raised); border: 1px solid var(--color-border);"}
+                    >{p.statusLabel}</span>
+                  </div>
+                  <p
+                    class="text-[var(--color-fg-3)]"
+                    style="font-family: var(--font-sans); font-size: 13px;"
+                  >{p.type} · {p.year}</p>
+                </div>
+                {p.url && (
+                  <span class="card-arrow text-[var(--color-border-em)] transition-colors duration-150 text-lg">↗</span>
+                )}
+              </div>
+
+              <!-- Tagline -->
+              <p
+                class="text-[var(--color-fg-2)] mb-4"
+                style="font-family: var(--font-sans); font-size: 13px; font-weight: 500;"
+              >{p.tagline}</p>
+
+              <!-- Description -->
+              <p
+                class="text-[var(--color-fg-2)] mb-4"
+                style="font-family: var(--font-sans); font-size: 15px; line-height: 1.65;"
+              >{p.desc}</p>
+
+              <!-- Stack -->
+              <div class="flex flex-wrap gap-1.5">
+                {p.stack.map((tech) => (
+                  <span
+                    class="text-[var(--color-fg-3)] border border-[var(--color-border)]"
+                    style="font-family: var(--font-mono); font-size: 11px; background: var(--color-surface); padding: 3px 8px; border-radius: 5px;"
+                  >{tech}</span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ── BACKGROUND ────────────────────────── -->
+    <section id="background" class="py-24 border-t border-[var(--color-border)] reveal">
+
+      <h2
+        class="text-[var(--color-fg-3)] mb-4 tracking-[0.12em] uppercase"
+        style="font-family: var(--font-sans); font-size: 13px; font-weight: 600;"
+      >Background</h2>
+
+      <p
+        class="text-[var(--color-fg-2)] mb-10 max-w-[560px] reveal reveal-d1"
+        style="font-family: var(--font-sans); font-size: 18px; line-height: 1.7;"
+      >
+        I've been building on the web for years — from blogs and WordPress sites to Laravel apps and SaaS products.
+        Started in Sri Ganganagar, moved to Jaipur for college (B.Tech IT, UDML), and never stopped shipping.
+      </p>
+
+      <!-- About me paragraph -->
+      <p
+        class="text-[var(--color-fg-2)] mb-12 reveal reveal-d2"
+        style="font-family: var(--font-sans); font-size: 16px; line-height: 1.75;"
+      >
+        I started with blogging and WordPress — learning SEO, content, and how online businesses actually work.
+        Then moved into Laravel and custom development. Today, through
+        <span class="text-[var(--color-fg-1)] font-medium"> TechnoFizi Solutions</span>
+        (est. 2017, Jaipur), I build my own products and help clients grow on the web.
+        My current focus is <a href="https://replyko.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">ReplyKo</a>.
+      </p>
+
+      <!-- Skills grid -->
+      <div class="flex flex-col gap-5 reveal reveal-d3">
+        {skills.map(({ category, items }) => (
+          <div class="flex gap-5 items-start">
+            <span
+              class="text-[var(--color-fg-3)] shrink-0 pt-0.5"
+              style="font-family: var(--font-sans); font-size: 13px; width: 190px;"
+            >{category}</span>
+            <div class="flex flex-wrap gap-1.5">
+              {items.map((item) => (
+                <span
+                  class="text-[var(--color-fg-2)] border border-[var(--color-border)]"
+                  style="font-family: var(--font-mono); font-size: 12px; background: var(--color-raised); padding: 4px 10px; border-radius: 6px;"
+                >{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIAL ───────────────────────── -->
+    <section class="py-20 border-t border-[var(--color-border)] reveal">
+      <blockquote
+        class="text-[var(--color-fg-2)] max-w-[580px] mb-5 pl-5"
+        style="font-family: var(--font-display); font-size: clamp(18px, 3vw, 22px); font-style: italic; line-height: 1.65; border-left: 3px solid var(--color-accent);"
+      >
+        "Shubham has a knack for building practical tools that actually get used. He ships fast, thinks about the user, and handles the whole stack himself."
+      </blockquote>
+      <div
+        class="text-[var(--color-fg-3)] pl-5"
+        style="font-family: var(--font-sans); font-size: 14px;"
+      >— A colleague · ReplyKo beta tester</div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer
+    class="max-w-[720px] mx-auto px-6 py-10 mt-4 border-t border-[var(--color-border)] flex flex-wrap justify-between items-center gap-4"
+    style="font-family: var(--font-sans);"
+  >
+    <div>
+      <div
+        class="mb-1.5"
+        style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-fg-1); letter-spacing: -0.02em;"
+      >
+        <span style="color: var(--color-accent);">S</span>hubham Chugh
+      </div>
+      <div style="font-size: 13px; color: var(--color-fg-3);">India · Solo founder &amp; developer</div>
+    </div>
+
+    <div class="flex flex-col items-end gap-2.5">
+      <div class="flex gap-5">
+        {[
+          ["GitHub", "https://github.com/theshubhamchugh"],
+          ["YouTube", "https://www.youtube.com/@theshubhamchugh"],
+          ["Twitter/X", "https://x.com/theshubhamchugh"],
+        ].map(([label, href]) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener"
+            class="footer-link text-[var(--color-fg-3)] hover:text-[var(--color-accent)] transition-colors duration-150"
+            style="font-size: 13px;"
+          >{label}</a>
+        ))}
+      </div>
+      <a
+        href="mailto:hey@shubhamchugh.com"
+        class="footer-link text-[var(--color-fg-2)] hover:text-[var(--color-accent)] transition-colors duration-150"
+        style="font-size: 13px;"
+      >hey@shubhamchugh.com</a>
+    </div>
+  </footer>
 </Layout>
+
+<script>
+  // ── Nav scroll effect ──────────────────────
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      nav!.style.background = "rgba(12,12,14,0.92)";
+      nav!.style.backdropFilter = "blur(16px)";
+      nav!.style.borderBottomColor = "#28282f";
+    } else {
+      nav!.style.background = "transparent";
+      nav!.style.backdropFilter = "none";
+      nav!.style.borderBottomColor = "transparent";
+    }
+  });
+
+  // ── Nav scroll buttons ─────────────────────
+  document.querySelectorAll("[data-scroll]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = (btn as HTMLElement).dataset.scroll!;
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  });
+
+  // ── Mobile nav ────────────────────────────
+  const toggle = document.getElementById("navToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  toggle?.addEventListener("click", () => {
+    const open = mobileMenu?.classList.contains("flex");
+    mobileMenu?.classList.toggle("hidden", open);
+    mobileMenu?.classList.toggle("flex", !open);
+  });
+  document.querySelectorAll(".mobile-nav-link").forEach((l) => {
+    l.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+      mobileMenu?.classList.remove("flex");
+    });
+  });
+
+  // ── Hero fade-in on load ───────────────────
+  const heroItems = document.querySelectorAll(".hero-item");
+  heroItems.forEach((el) => {
+    (el as HTMLElement).style.opacity = "0";
+    (el as HTMLElement).style.transform = "translateY(20px)";
+  });
+
+  const delay = (el: Element) => {
+    const d = parseFloat((el as HTMLElement).style.transitionDelay || "0");
+    return d;
+  };
+
+  requestAnimationFrame(() => {
+    heroItems.forEach((el) => {
+      const d = parseFloat((el as HTMLElement).style.transitionDelay ?? "0");
+      setTimeout(() => {
+        (el as HTMLElement).style.transition = "opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1)";
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "translateY(0)";
+      }, d);
+    });
+  });
+
+  // ── Scroll reveal ─────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          observer.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -32px 0px" }
+  );
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  // ── Project card hover + click ────────────
+  document.querySelectorAll(".project-card").forEach((card) => {
+    const url = (card as HTMLElement).dataset.url;
+    const arrow = card.querySelector(".card-arrow");
+
+    card.addEventListener("mouseenter", () => {
+      (card as HTMLElement).style.transform = "translateY(-3px)";
+      (card as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.45)";
+      (card as HTMLElement).style.borderColor = "#3a3a44";
+      if (arrow) (arrow as HTMLElement).style.color = "#e8622a";
+    });
+    card.addEventListener("mouseleave", () => {
+      (card as HTMLElement).style.transform = "translateY(0)";
+      (card as HTMLElement).style.boxShadow = "0 1px 3px rgba(0,0,0,0.2)";
+      (card as HTMLElement).style.borderColor = "#28282f";
+      if (arrow) (arrow as HTMLElement).style.color = "#3a3a44";
+    });
+    if (url) {
+      card.addEventListener("click", () => window.open(url, "_blank"));
+    }
+  });
+
+  // ── Accent link hover ─────────────────────
+  document.querySelectorAll(".accent-link").forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      (el as HTMLElement).style.borderBottomColor = "#e8622a";
+    });
+    el.addEventListener("mouseleave", () => {
+      (el as HTMLElement).style.borderBottomColor = "rgba(232,98,42,0.35)";
+    });
+  });
+</script>
