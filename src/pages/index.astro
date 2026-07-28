@@ -12,7 +12,7 @@ const skills = [
 
 const projects = [
   {
-    name: "ReplyKo",
+    name: "WinkSend",
     tagline: "Instagram automation for creators & agencies",
     desc: "Auto-reply to DMs and comments on Instagram. Built for creators, agencies, and social media teams who need to scale engagement without manual effort.",
     stack: ["Laravel", "React.js", "MySQL", "Instagram API"],
@@ -20,7 +20,18 @@ const projects = [
     statusLabel: "Live",
     year: "2024 – Present",
     type: "SaaS",
-    url: "https://replyko.com",
+    url: "https://www.winksend.com",
+  },
+  {
+    name: "Toolboro",
+    tagline: "Crowdsourced tools discovery platform",
+    desc: "A Product Hunt–style discovery platform for tools — crowdsourced submissions, upvotes, and reviews to help people find the best tools for the job.",
+    stack: ["Laravel", "React.js", "MySQL"],
+    status: "live",
+    statusLabel: "Live",
+    year: "2024 – Present",
+    type: "SaaS",
+    url: "https://www.toolboro.com",
   },
   {
     name: "TechnoFizi",
@@ -149,9 +160,11 @@ const adServices = [
 
         <div class="hero-item mt-7 mb-5" style="transition-delay: 280ms;">
           <p class="text-[var(--color-fg-2)] max-w-[540px]" style="font-family: var(--font-sans); font-size: 20px; font-weight: 400; line-height: 1.6;">
-            Developer, SEO veteran, and performance marketer — building{" "}
-            <a href="https://replyko.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">ReplyKo</a>
-            {" "}and helping brands scale with Google & Meta ads.
+            Developer and marketer. Right now I'm building{" "}
+            <a href="https://www.winksend.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">WinkSend</a>
+            {" "}and{" "}
+            <a href="https://www.toolboro.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">Toolboro</a>
+            {" "}— and helping brands grow with Google & Meta ads.
           </p>
         </div>
 
@@ -199,7 +212,9 @@ const adServices = [
               <div class="flex justify-between items-start mb-3">
                 <div>
                   <div class="flex items-center gap-2.5 mb-1.5">
-                    <h3 class="text-[var(--color-fg-1)]" style={`font-family: var(--font-sans); font-size: ${i === 0 ? "20px" : "17px"}; font-weight: 600;`}>{p.name}</h3>
+                    <h3 class="text-[var(--color-fg-1)]" style={`font-family: var(--font-sans); font-size: ${i === 0 ? "20px" : "17px"}; font-weight: 600;`}>
+                      {p.url ? <a href={p.url} target="_blank" rel="noopener" style="color: inherit;">{p.name}</a> : p.name}
+                    </h3>
                     <span
                       class="text-[10px] font-semibold tracking-[0.04em] uppercase px-2 py-0.5 rounded-full whitespace-nowrap"
                       style={isLive
@@ -409,7 +424,7 @@ const adServices = [
         Then moved into Laravel, paid ads, and custom development. Today, through
         <span class="text-[var(--color-fg-1)] font-medium"> TechnoFizi Solutions</span>
         (partnership firm, est. 2017, Jaipur), we build products and help clients grow on the web.
-        My current focus is <a href="https://replyko.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">ReplyKo</a>.
+        My current focus is <a href="https://www.winksend.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">WinkSend</a> and <a href="https://www.toolboro.com" target="_blank" rel="noopener" class="accent-link" style="color: var(--color-accent); border-bottom: 1px solid rgba(232,98,42,0.35);">Toolboro</a>.
       </p>
 
       <div class="flex flex-col gap-5 reveal reveal-d3">
@@ -434,7 +449,7 @@ const adServices = [
       >
         "Shubham has a knack for building practical tools that actually get used. He ships fast, thinks about the user, and handles the whole stack himself."
       </blockquote>
-      <div class="text-[var(--color-fg-3)] pl-5" style="font-family: var(--font-sans); font-size: 14px;">— A colleague · ReplyKo beta tester</div>
+      <div class="text-[var(--color-fg-3)] pl-5" style="font-family: var(--font-sans); font-size: 14px;">— A colleague · WinkSend beta tester</div>
     </section>
 
   </main>
